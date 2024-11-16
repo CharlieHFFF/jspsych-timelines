@@ -265,5 +265,5 @@ function createTimeline(jsPsych, stimuli, keyboard_response = "space", trial_dur
 }
 
 export { createTimeline };
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=out.js.map
 //# sourceMappingURL=index.js.map

@@ -10,8 +10,9 @@ var jsPsychTimelineNBack = (function (exports) {
   var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
     get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
   }) : x)(function(x) {
-    if (typeof require !== "undefined") return require.apply(this, arguments);
-    throw Error('Dynamic require of "' + x + '" is not supported');
+    if (typeof require !== "undefined")
+      return require.apply(this, arguments);
+    throw new Error('Dynamic require of "' + x + '" is not supported');
   });
   var __commonJS = (cb, mod) => function __require2() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -29,7 +30,7 @@ var jsPsychTimelineNBack = (function (exports) {
     // file that has been converted to a CommonJS file using a Babel-
     // compatible transform (i.e. "__esModule" has not been set), then set
     // "default" to the CommonJS "module.exports" for node compatibility.
-    __defProp(target, "default", { value: mod, enumerable: true }) ,
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
     mod
   ));
 
@@ -117,7 +118,8 @@ var jsPsychTimelineNBack = (function (exports) {
           };
           prng.quick = prng;
           if (state) {
-            if (typeof state == "object") copy(state, xg);
+            if (typeof state == "object")
+              copy(state, xg);
             prng.state = function() {
               return copy(xg, {});
             };
@@ -208,7 +210,8 @@ var jsPsychTimelineNBack = (function (exports) {
           prng.int32 = xg.next;
           prng.quick = prng;
           if (state) {
-            if (typeof state == "object") copy(state, xg);
+            if (typeof state == "object")
+              copy(state, xg);
             prng.state = function() {
               return copy(xg, {});
             };
@@ -288,7 +291,8 @@ var jsPsychTimelineNBack = (function (exports) {
           prng.int32 = xg.next;
           prng.quick = prng;
           if (state) {
-            if (typeof state == "object") copy(state, xg);
+            if (typeof state == "object")
+              copy(state, xg);
             prng.state = function() {
               return copy(xg, {});
             };
@@ -348,10 +352,14 @@ var jsPsychTimelineNBack = (function (exports) {
                 X[j & 7] = X[j & 7] << 15 ^ seed2.charCodeAt(j) + X[j + 1 & 7] << 13;
               }
             }
-            while (X.length < 8) X.push(0);
-            for (j = 0; j < 8 && X[j] === 0; ++j) ;
-            if (j == 8) X[7] = -1;
-            else X[j];
+            while (X.length < 8)
+              X.push(0);
+            for (j = 0; j < 8 && X[j] === 0; ++j)
+              ;
+            if (j == 8)
+              X[7] = -1;
+            else
+              X[j];
             me2.x = X;
             me2.i = 0;
             for (j = 256; j > 0; --j) {
@@ -366,7 +374,8 @@ var jsPsychTimelineNBack = (function (exports) {
           return t;
         }
         function impl(seed, opts) {
-          if (seed == null) seed = +/* @__PURE__ */ new Date();
+          if (seed == null)
+            seed = +/* @__PURE__ */ new Date();
           var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
             return (xg.next() >>> 0) / 4294967296;
           };
@@ -379,7 +388,8 @@ var jsPsychTimelineNBack = (function (exports) {
           prng.int32 = xg.next;
           prng.quick = prng;
           if (state) {
-            if (state.x) copy(state, xg);
+            if (state.x)
+              copy(state, xg);
             prng.state = function() {
               return copy(xg, {});
             };
@@ -435,8 +445,10 @@ var jsPsychTimelineNBack = (function (exports) {
               limit = Math.max(limit, seed2.length);
             }
             for (i = 0, j = -32; j < limit; ++j) {
-              if (seed2) v ^= seed2.charCodeAt((j + 32) % seed2.length);
-              if (j === 0) w = v;
+              if (seed2)
+                v ^= seed2.charCodeAt((j + 32) % seed2.length);
+              if (j === 0)
+                w = v;
               v ^= v << 10;
               v ^= v >>> 15;
               v ^= v << 4;
@@ -473,7 +485,8 @@ var jsPsychTimelineNBack = (function (exports) {
           return t;
         }
         function impl(seed, opts) {
-          if (seed == null) seed = +/* @__PURE__ */ new Date();
+          if (seed == null)
+            seed = +/* @__PURE__ */ new Date();
           var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
             return (xg.next() >>> 0) / 4294967296;
           };
@@ -486,7 +499,8 @@ var jsPsychTimelineNBack = (function (exports) {
           prng.int32 = xg.next;
           prng.quick = prng;
           if (state) {
-            if (state.X) copy(state, xg);
+            if (state.X)
+              copy(state, xg);
             prng.state = function() {
               return copy(xg, {});
             };
@@ -565,7 +579,8 @@ var jsPsychTimelineNBack = (function (exports) {
           prng.int32 = xg.next;
           prng.quick = prng;
           if (state) {
-            if (typeof state == "object") copy(state, xg);
+            if (typeof state == "object")
+              copy(state, xg);
             prng.state = function() {
               return copy(xg, {});
             };
@@ -638,7 +653,8 @@ var jsPsychTimelineNBack = (function (exports) {
             if (is_math_call) {
               math[rngname] = prng2;
               return seed2;
-            } else return prng2;
+            } else
+              return prng2;
           })(
             prng,
             shortseed,
@@ -2791,9 +2807,9 @@ var jsPsychTimelineNBack = (function (exports) {
   });
 
   // ../../node_modules/jspsych/dist/index.js
-  __toESM(require_auto_bind());
-  __toESM(require_random_words());
-  __toESM(require_alea());
+  __toESM(require_auto_bind(), 1);
+  __toESM(require_random_words(), 1);
+  __toESM(require_alea(), 1);
   var ParameterType = /* @__PURE__ */ ((ParameterType2) => {
     ParameterType2[ParameterType2["BOOL"] = 0] = "BOOL";
     ParameterType2[ParameterType2["STRING"] = 1] = "STRING";
@@ -3123,5 +3139,5 @@ var jsPsychTimelineNBack = (function (exports) {
   return exports;
 
 })({});
-//# sourceMappingURL=index.global.js.map
+//# sourceMappingURL=out.js.map
 //# sourceMappingURL=index.global.js.map

@@ -49,6 +49,7 @@
     ]
   },
   "dependencies": {
+    "@jspsych-contrib/plugin-html-keyboard-response-raf": "^1.0.1",
     "chokidar": "^3.6.0",
     "gulp": "^5.0.0",
     "gulp-replace": "^1.1.4",
